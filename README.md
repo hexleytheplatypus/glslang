@@ -182,7 +182,8 @@ Use the steps in [Build Steps](#build-steps), with the following notes/exception
   + execute `updateGrammar web` from the glslang subdirectory
     (or if using your own scripts, `m4` needs a `-DGLSLANG_WEB` argument)
   + set `-DENABLE_HLSL=OFF -DBUILD_TESTING=OFF -DENABLE_OPT=OFF -DINSTALL_GTEST=OFF`
-  + turn on `-DENABLE_GLSLANG_WEB=ON`
+  + turn on `-DENABLE_GLSLANG_JS=ON`
+  + optionally, for a minimum-size binary, turn on `-DENABLE_GLSLANG_WEBMIN=ON`
   + optionally, for GLSL compilation error messages, turn on `-DENABLE_GLSLANG_WEB_DEVEL=ON`
 * `emsdk` needs to be present in your executable search path, *PATH* for
   Bash-like environments
@@ -198,6 +199,19 @@ Example:
 emcmake cmake -DCMAKE_BUILD_TYPE=Release -DENABLE_GLSLANG_WEB=ON \
     -DENABLE_HLSL=OFF -DBUILD_TESTING=OFF -DENABLE_OPT=OFF -DINSTALL_GTEST=OFF ..
 ```
+
+Building glslang - Using vcpkg
+------------------------------
+
+You can download and install glslang using the [vcpkg](https://github.com/Microsoft/vcpkg) dependency manager:
+
+    git clone https://github.com/Microsoft/vcpkg.git
+    cd vcpkg
+    ./bootstrap-vcpkg.sh
+    ./vcpkg integrate install
+    ./vcpkg install glslang
+
+The glslang port in vcpkg is kept up to date by Microsoft team members and community contributors. If the version is out of date, please [create an issue or pull request](https://github.com/Microsoft/vcpkg) on the vcpkg repository.
 
 Testing
 -------

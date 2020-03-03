@@ -1,6 +1,6 @@
 //
 // Copyright (C) 2014-2016 LunarG, Inc.
-// Copyright (C) 2015-2018 Google, Inc.
+// Copyright (C) 2015-2020 Google, Inc.
 // Copyright (C) 2017 ARM Limited.
 //
 // All rights reserved.
@@ -4731,7 +4731,7 @@ spv::Id TGlslangToSpvTraverser::createImageTextureFunctionCall(glslang::TIntermO
             // imageAtomicStore has a void return type so base the pointer type on
             // the type of the value operand.
             if (node->getOp() == glslang::EOpImageAtomicStore) {
-                resultTypeId = builder.makePointer(spv::StorageClassImage, builder.getTypeId(operands[2].word));                
+                resultTypeId = builder.makePointer(spv::StorageClassImage, builder.getTypeId(*opIt));
             } else {
                 resultTypeId = builder.makePointer(spv::StorageClassImage, resultType());
             }

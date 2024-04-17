@@ -18,3 +18,4 @@ out/
 third_party/
 buildtools/
 tools/
+.DS_Store
